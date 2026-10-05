@@ -7,73 +7,135 @@ import {
   Headphones,
 } from "lucide-react";
 
+import {
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
+
 function Sidebar() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const isDashboard =
+    location.pathname === "/customer/dashboard";
+
+  const isTickets =
+    location.pathname === "/customer/tickets";
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    navigate("/login");
+  };
+
   return (
     <aside className="dashboard-sidebar">
 
-      {/* Logo */}
+      {/* LOGO */}
       <div className="sidebar-logo">
+
         <div className="sidebar-logo-icon">
           <Headphones size={21} />
         </div>
 
         <span>HelpDesk</span>
+
       </div>
 
-
-      {/* Navigation */}
+      {/* NAVIGATION */}
       <nav className="sidebar-nav">
 
         <p className="sidebar-section-title">
           MAIN MENU
         </p>
 
-        <a
-          href="/customer/dashboard"
-          className="sidebar-link active"
+        {/* DASHBOARD */}
+        <button
+          type="button"
+          className={`sidebar-link ${
+            isDashboard ? "active" : ""
+          }`}
+          onClick={() =>
+            navigate("/customer/dashboard")
+          }
         >
           <LayoutDashboard size={19} />
-          <span>Dashboard</span>
-        </a>
 
-        <a
-          href="#tickets"
-          className="sidebar-link"
+          <span>
+            Dashboard
+          </span>
+        </button>
+
+        {/* MY TICKETS */}
+        <button
+          type="button"
+          className={`sidebar-link ${
+            isTickets ? "active" : ""
+          }`}
+          onClick={() =>
+            navigate("/customer/tickets")
+          }
         >
           <Ticket size={19} />
-          <span>My Tickets</span>
-        </a>
 
-        <a
-          href="#create-ticket"
+          <span>
+            My Tickets
+          </span>
+        </button>
+
+        {/* NEW TICKET */}
+        <button
+          type="button"
           className="sidebar-link"
+          onClick={() =>
+            navigate("/customer/create-ticket")
+          }
         >
           <PlusCircle size={19} />
-          <span>New Ticket</span>
-        </a>
 
+          <span>
+            New Ticket
+          </span>
+        </button>
 
+        {/* ACCOUNT */}
         <p className="sidebar-section-title settings-title">
           ACCOUNT
         </p>
 
-        <a
-          href="#settings"
+        {/* SETTINGS */}
+        <button
+          type="button"
           className="sidebar-link"
+          onClick={() =>
+            alert(
+              "Settings page will be added later."
+            )
+          }
         >
           <Settings size={19} />
-          <span>Settings</span>
-        </a>
+
+          <span>
+            Settings
+          </span>
+        </button>
 
       </nav>
 
-
-      {/* Bottom */}
+      {/* LOGOUT */}
       <div className="sidebar-bottom">
 
-        <button className="sidebar-logout">
+        <button
+          type="button"
+          className="sidebar-logout"
+          onClick={handleLogout}
+        >
           <LogOut size={19} />
-          <span>Logout</span>
+
+          <span>
+            Logout
+          </span>
         </button>
 
       </div>

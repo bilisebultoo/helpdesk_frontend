@@ -3441,3 +3441,188 @@
     flex-direction: column;
   }
 }
+/* =========================================
+   LOGIN INPUT FIX
+   ========================================= */
+
+.auth-form {
+  width: 100%;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #172033;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.input-wrapper > svg {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9aa4b2;
+  width: 19px;
+  height: 19px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.input-wrapper input {
+  width: 100%;
+  height: 54px;
+  box-sizing: border-box;
+
+  padding: 0 16px 0 48px;
+
+  border: 1px solid #d5dce5;
+  border-radius: 9px;
+
+  background: #f8fafc;
+
+  color: #172033;
+  font-size: 15px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.input-wrapper input::placeholder {
+  color: #9aa4b2;
+}
+
+.input-wrapper input:focus {
+  border-color: #2864e6;
+  background: #ffffff;
+
+  box-shadow: 0 0 0 3px rgba(40, 100, 230, 0.10);
+}
+
+/* Password Show/Hide button */
+
+.password-toggle {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  border: none;
+  background: transparent;
+
+  color: #2864e6;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  padding: 5px 4px;
+}
+
+.password-toggle:hover {
+  color: #174bb5;
+}
+
+/* Make room for Show/Hide button */
+.input-wrapper input[type="password"],
+.input-wrapper input[type="text"] {
+  padding-right: 70px;
+}
+
+/* Forgot password row */
+
+.password-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  margin-bottom: 9px;
+}
+
+.password-label label {
+  margin-bottom: 0;
+}
+
+.forgot-password {
+  border: none;
+  background: transparent;
+
+  color: #2864e6;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Remember me */
+
+.remember-row {
+  margin-top: 2px;
+  margin-bottom: 24px;
+}
+
+.remember-label {
+  display: flex !important;
+  align-items: center;
+  gap: 9px;
+
+  cursor: pointer;
+
+  font-weight: 400 !important;
+}
+
+.remember-label input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+
+  cursor: pointer;
+}
+
+/* Sign in button */
+
+.primary-button {
+  width: 100%;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border: none;
+  border-radius: 9px;
+
+  cursor: pointer;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.primary-button svg {
+  flex-shrink: 0;
+}

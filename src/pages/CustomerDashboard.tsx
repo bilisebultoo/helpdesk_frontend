@@ -19,6 +19,7 @@ function CustomerDashboard() {
 
   const tickets = [
     {
+      id: "HD-1001",
       title: "Unable to login to my account",
       category: "Account & Authentication",
       priority: "High" as const,
@@ -26,6 +27,7 @@ function CustomerDashboard() {
       date: "Oct 4, 2026",
     },
     {
+      id: "HD-1002",
       title: "Payment was deducted twice",
       category: "Billing & Payment",
       priority: "Medium" as const,
@@ -33,6 +35,7 @@ function CustomerDashboard() {
       date: "Oct 2, 2026",
     },
     {
+      id: "HD-1003",
       title: "Internet connection problem",
       category: "Technical Support",
       priority: "Low" as const,
@@ -40,6 +43,7 @@ function CustomerDashboard() {
       date: "Sep 29, 2026",
     },
     {
+      id: "HD-1004",
       title: "Unable to update profile",
       category: "Account & Authentication",
       priority: "Medium" as const,
@@ -50,24 +54,19 @@ function CustomerDashboard() {
 
   return (
     <div className="dashboard-layout">
-
-      {/* ================= SIDEBAR ================= */}
+      {/* SIDEBAR */}
       <Sidebar />
 
-
-      {/* ================= MAIN AREA ================= */}
+      {/* MAIN CONTENT */}
       <main className="dashboard-main">
 
-        {/* ================= TOPBAR ================= */}
+        {/* TOP BAR */}
         <header className="dashboard-topbar">
 
-          {/* Mobile menu */}
           <div className="mobile-menu-button">
             ☰
           </div>
 
-
-          {/* Search */}
           <div className="topbar-search">
             <Search size={18} />
 
@@ -77,19 +76,16 @@ function CustomerDashboard() {
             />
           </div>
 
-
-          {/* Right side */}
           <div className="topbar-right">
 
-            {/* Notification */}
-            <button className="notification-button">
+            <button
+              type="button"
+              className="notification-button"
+            >
               <Bell size={20} />
-
               <span className="notification-dot"></span>
             </button>
 
-
-            {/* User profile */}
             <div className="user-profile">
 
               <div className="user-avatar">
@@ -97,13 +93,8 @@ function CustomerDashboard() {
               </div>
 
               <div className="user-info">
-                <strong>
-                  Biliise
-                </strong>
-
-                <span>
-                  Customer
-                </span>
+                <strong>Biliise</strong>
+                <span>Customer</span>
               </div>
 
               <ChevronDown size={17} />
@@ -114,16 +105,13 @@ function CustomerDashboard() {
 
         </header>
 
-
-        {/* ================= DASHBOARD CONTENT ================= */}
+        {/* DASHBOARD CONTENT */}
         <div className="dashboard-content">
 
-
-          {/* ================= WELCOME SECTION ================= */}
+          {/* WELCOME */}
           <section className="welcome-section">
 
             <div>
-
               <p className="welcome-small">
                 CUSTOMER PORTAL
               </p>
@@ -135,24 +123,22 @@ function CustomerDashboard() {
               <p>
                 Here's an overview of your support requests.
               </p>
-
             </div>
 
-
-            {/* Create ticket button */}
             <button
+              type="button"
               className="create-ticket-button"
-              onClick={() => navigate("/customer/create-ticket")}
+              onClick={() =>
+                navigate("/customer/create-ticket")
+              }
             >
               <Plus size={19} />
-
               Create ticket
             </button>
 
           </section>
 
-
-          {/* ================= STATISTICS ================= */}
+          {/* STATISTICS */}
           <section className="stats-grid">
 
             <StatCard
@@ -178,54 +164,47 @@ function CustomerDashboard() {
 
           </section>
 
-
-          {/* ================= RECENT TICKETS ================= */}
+          {/* RECENT TICKETS */}
           <section
             className="tickets-section"
             id="tickets"
           >
 
-            {/* Section header */}
             <div className="section-header">
 
               <div>
-
-                <h2>
-                  Recent tickets
-                </h2>
+                <h2>Recent tickets</h2>
 
                 <p>
                   Your latest support requests
                 </p>
-
               </div>
 
-
-              {/* View all button */}
               <button
+                type="button"
                 className="view-all-button"
-                onClick={() => navigate("/customer/tickets")}
+                onClick={() =>
+                  navigate("/customer/tickets")
+                }
               >
                 View all
               </button>
 
             </div>
 
-
-            {/* Ticket list */}
+            {/* TICKET LIST */}
             <div className="ticket-list">
 
-              {tickets.map((ticket, index) => (
-
+              {tickets.map((ticket) => (
                 <TicketCard
-                  key={index}
+                  key={ticket.id}
+                  id={ticket.id}
                   title={ticket.title}
                   category={ticket.category}
                   priority={ticket.priority}
                   status={ticket.status}
                   date={ticket.date}
                 />
-
               ))}
 
             </div>
@@ -235,7 +214,6 @@ function CustomerDashboard() {
         </div>
 
       </main>
-
     </div>
   );
 }

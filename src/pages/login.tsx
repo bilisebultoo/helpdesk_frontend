@@ -1,10 +1,39 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Headphones, Mail, Lock, ArrowRight, CheckCircle } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  Headphones,
+  Mail,
+  Lock,
+  ArrowRight,
+  CheckCircle,
+} from "lucide-react";
 import "../App.css";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
+
+  // React Router navigation
+  const navigate = useNavigate();
+
+  // Handle login for frontend testing
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // Temporary frontend login
+    // We will connect this to Laravel later.
+    localStorage.setItem("token", "frontend-test-token");
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        name: "Biliise",
+        role: "customer",
+      })
+    );
+
+    // Go to customer dashboard
+    navigate("/customer/dashboard");
+  };
 
   return (
     <div className="auth-page">
@@ -21,6 +50,7 @@ function Login() {
         </div>
 
         <div className="brand-content">
+
           <span className="brand-badge">
             CUSTOMER SUPPORT PLATFORM
           </span>
@@ -53,6 +83,7 @@ function Login() {
             </div>
 
           </div>
+
         </div>
 
         <div className="brand-footer">
@@ -68,23 +99,32 @@ function Login() {
         <div className="auth-form-wrapper">
 
           <div className="mobile-logo">
+
             <div className="brand-icon">
               <Headphones size={22} />
             </div>
 
             <span>HelpDesk</span>
+
           </div>
 
+
           <div className="auth-heading">
+
             <h2>Welcome back</h2>
 
             <p>
               Sign in to continue to your HelpDesk account.
             </p>
+
           </div>
 
 
-          <form className="auth-form">
+          {/* LOGIN FORM */}
+          <form
+            className="auth-form"
+            onSubmit={handleLogin}
+          >
 
             {/* Email */}
             <div className="form-group">
@@ -125,6 +165,7 @@ function Login() {
                 </button>
 
               </div>
+
 
               <div className="input-wrapper">
 
@@ -178,16 +219,17 @@ function Login() {
           </form>
 
 
+          {/* Register */}
           <div className="auth-divider">
             <span>New to HelpDesk?</span>
           </div>
 
 
           <Link
-             to="/register"
-                  className="secondary-button auth-link"
->
-                      Create an account
+            to="/register"
+            className="secondary-button auth-link"
+          >
+            Create an account
           </Link>
 
 
